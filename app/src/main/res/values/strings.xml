@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">KnowYourMath</string>
+
+    <string-array name="dificulty">
+        <item>Fácil</item>
+        <item>Médio</item>
+        <item>Especialista</item>
+        <item>Épico</item>
+        <item>Lendário</item>
+
+    </string-array>
+</resources>
