@@ -3,6 +3,7 @@ package com.example.knowyourmath;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,6 +11,7 @@ import android.widget.AdapterViewAnimator;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +23,7 @@ import java.util.Hashtable;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
+import android.os.Handler;
 
 public class MainActivity extends Activity {
 
@@ -65,7 +68,7 @@ public class MainActivity extends Activity {
     private void SetNewValues(int [] values, TextView firstValue, TextView secondValue,EditText guess){
         firstValue.setText(String.valueOf(values[0]));
         secondValue.setText(String.valueOf(values[1]));
-        guess.setText(" ");
+        guess.setText("");
     }
 
 
@@ -109,6 +112,12 @@ public class MainActivity extends Activity {
         final TextView firstValue = (TextView) findViewById(R.id.firstValue);
         final TextView secondValue = (TextView) findViewById(R.id.secondValue);
         final EditText guess = (EditText) findViewById(R.id.guess);
+        final ImageView correct_image = (ImageView) findViewById(R.id.correct_image);
+        final ImageView wrong_image = (ImageView) findViewById(R.id.wrong_image);
+        final TextView correct_text = (TextView) findViewById(R.id.correct_text);
+        final TextView wrong_text = (TextView) findViewById(R.id.wrong_text);
+        guess.setText("");
+
 
 
         //Put Dictionary keys and values
@@ -120,14 +129,50 @@ public class MainActivity extends Activity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(guess.getText().toString().equals(" ")){
-                            //Hasn't made a choice , doens't change anything
+                        if(guess.getText().toString().equals("")){
+                            //Hasn't made a choice , doesn't change anything
                             Toast.makeText(MainActivity.this, "You have to at least try !!! \n Don't give up !!! ", Toast.LENGTH_SHORT).show();
+                            guess.setText("");
+
                         }
                         //Entered something on guess input
                         else {
-                            newValues = GenerateValues();
-                            SetNewValues(newValues,firstValue,secondValue,guess);
+
+                            guess.setEnabled(false);
+                            int guess_value = Integer.valueOf(guess.getText().toString());
+                            int x = Integer.valueOf(firstValue.getText().toString());
+                            int y = Integer.valueOf(secondValue.getText().toString());
+                            //Correct answer
+                            if(guess_value == (x * y )){
+                                correct_image.setVisibility(View.VISIBLE);
+                                correct_text.setVisibility(View.VISIBLE);
+                                wrong_image.setVisibility(View.INVISIBLE);
+                                wrong_text.setVisibility(View.INVISIBLE);
+                            }
+                            //Wrong answer
+                            else{
+                                wrong_image.setVisibility(View.VISIBLE);
+                                wrong_text.setVisibility(View.VISIBLE);
+                                correct_image.setVisibility(View.INVISIBLE);
+                                correct_text.setVisibility(View.INVISIBLE);
+
+                            }
+
+                            final Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    newValues = GenerateValues();
+                                    SetNewValues(newValues,firstValue,secondValue,guess);
+                                    wrong_image.setVisibility(View.INVISIBLE);
+                                    wrong_text.setVisibility(View.INVISIBLE);
+                                    correct_image.setVisibility(View.INVISIBLE);
+                                    correct_text.setVisibility(View.INVISIBLE);
+                                    guess.setEnabled(true);
+                                }
+                            },1000);
+
+
 
                         }
 
@@ -150,6 +195,10 @@ public class MainActivity extends Activity {
                     ChangeDif((String) parent.getSelectedItem().toString(),difs);
                     newValues = GenerateValues();
                     SetNewValues(newValues,firstValue,secondValue,guess);
+                    wrong_image.setVisibility(View.INVISIBLE);
+                    wrong_text.setVisibility(View.INVISIBLE);
+                    correct_image.setVisibility(View.INVISIBLE);
+                    correct_text.setVisibility(View.INVISIBLE);
 
             }
 

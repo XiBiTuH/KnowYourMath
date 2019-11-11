@@ -9,26 +9,30 @@
 
     <EditText
         android:id="@+id/guess"
-        android:layout_width="174dp"
-        android:layout_height="80dp"
-        android:layout_marginEnd="15dp"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:contentDescription="Your Answer"
+        android:editable="false"
         android:ems="10"
         android:fontFamily="casual"
         android:inputType="number"
         android:textAlignment="center"
-        android:textSize="35dp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/euqalSign"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.622" />
+        app:layout_constraintVertical_bias="0.623" />
 
     <TextView
         android:id="@+id/euqalSign"
         style="@style/ValuesText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
+        android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:fontFamily="casual"
         android:text="="
@@ -46,7 +50,8 @@
         android:layout_marginStart="12dp"
         android:layout_marginEnd="11dp"
         android:fontFamily="casual"
-        android:text="2"
+        android:text="2000"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/euqalSign"
         app:layout_constraintStart_toEndOf="@+id/operation"
@@ -58,10 +63,11 @@
         style="@style/ValuesText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="40dp"
         android:layout_marginEnd="3dp"
         android:fontFamily="casual"
-        android:text="2"
+        android:text="2000"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/operation"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,6 +84,7 @@
         android:layout_marginEnd="5dp"
         android:fontFamily="casual"
         android:text="x"
+        android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/secondValue"
         app:layout_constraintStart_toEndOf="@+id/firstValue"
@@ -90,7 +97,7 @@
         android:layout_height="80dp"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
-        android:backgroundTint="#00B6FF"
+        android:backgroundTint="#E44F4F"
         android:fontFamily="casual"
         android:text="I Got This ! "
         android:textAlignment="center"
@@ -117,6 +124,62 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:textColor= "#00B6FF"/>
+
+    <TextView
+        android:id="@+id/wrong_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="56dp"
+        android:fontFamily="casual"
+        android:text="Wrong "
+        android:textColor="#BE2020"
+        android:textSize="40sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/euqalSign"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/correct_text"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="56dp"
+        android:fontFamily="casual"
+        android:text="Good Job "
+        android:textAlignment="center"
+        android:textColor="#10C46F"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/euqalSign"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/wrong_image"
+        android:layout_width="127dp"
+        android:layout_height="139dp"
+        android:src="@mipmap/sad_icon_foreground"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/correct_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        app:layout_constraintVertical_bias="0.638" />
+
+    <ImageView
+        android:id="@+id/correct_image"
+        android:layout_width="126dp"
+        android:layout_height="138dp"
+        android:layout_marginTop="30dp"
+        android:src="@mipmap/correct_icon_foreground"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/wrong_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
