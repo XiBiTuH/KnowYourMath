@@ -2,11 +2,11 @@
     <string name="app_name">KnowYourMath</string>
 
     <string-array name="dificulty">
-        <item>Fácil</item>
-        <item>Médio</item>
+        <item>Facil</item>
+        <item>Medio</item>
         <item>Especialista</item>
-        <item>Épico</item>
-        <item>Lendário</item>
+        <item>Epico</item>
+        <item>Lendario</item>
 
     </string-array>
 </resources>

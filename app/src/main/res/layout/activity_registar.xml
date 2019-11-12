@@ -46,7 +46,6 @@
         android:layout_marginBottom="100dp"
         android:backgroundTint="#E44F4F"
         android:fontFamily="casual"
-        android:onClick="goToMainPage"
         android:text="Confirm"
         android:textAlignment="center"
         android:textSize="24sp"
