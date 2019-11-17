@@ -77,4 +77,8 @@ public class Registar extends AppCompatActivity {
 
     }
 
+    public void gotoLogin(View view) {
+        Intent login = new Intent(Registar.this,Login.class);
+        this.startActivity(login);
+    }
 }

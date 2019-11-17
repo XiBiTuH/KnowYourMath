@@ -48,7 +48,9 @@
         android:fontFamily="casual"
         android:text="Confirm"
         android:textAlignment="center"
+        android:textColor="#E7D9D9"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,4 +68,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/already_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#E44F4F"
+        android:fontFamily="casual"
+        android:text="Already have an account"
+        android:onClick="gotoLogin"
+        android:textAlignment="center"
+        android:textColor="#E7D9D9"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registar"
+        app:layout_constraintVertical_bias="0.245" />
 </androidx.constraintlayout.widget.ConstraintLayout>

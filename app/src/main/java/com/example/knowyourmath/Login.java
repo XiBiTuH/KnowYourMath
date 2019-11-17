@@ -46,9 +46,9 @@ public class Login extends Activity {
                             Intent myIntent = new Intent(Login.this,MainActivity.class);
                             myIntent.putExtra("ID",searchRes.getString(0));
                             myIntent.putExtra("Username",searchRes.getString(1));
-
+                            found = true;
                             Login.this.startActivity(myIntent);
-                            Toast.makeText(Login.this,"Welcome back !", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Login.this,"Welcome back " + searchRes.getString(1) +  " !", Toast.LENGTH_LONG).show();
 
                         }
                 }

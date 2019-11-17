@@ -39,7 +39,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT,USERNAME TEXT,PASSWORD TEXT)");
-        db.execSQL("CREATE TABLE " + SCORE_TABLE + " (SCORE_NUMBER INTEGER PRIMARY KEY AUTOINCREMENT,ID INTEGER ,LEVEL TEXT,TOTAL INTEGER)");
+        db.execSQL("CREATE TABLE " + SCORE_TABLE + " (SCORE_NUMBER INTEGER PRIMARY KEY AUTOINCREMENT,ID INTEGER ,LEVEL INTEGER,TOTAL INTEGER)");
 
     }
 
@@ -83,7 +83,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean InserDataIntoScores(int ID , String level,int score){
+    public boolean InserDataIntoScores(int ID , int level,int score){
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -95,11 +95,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cSearch = getAllDataFromScores();
 
 
-
         while (cSearch.moveToNext()){
 
             //check if the user has already a score for that level , if so then update it , if not then add it
-            if(cSearch.getString(1).equals(String.valueOf(ID)) && cSearch.getString(2).equals(level)){
+            if(cSearch.getString(1).equals(String.valueOf(ID)) && Integer.valueOf(cSearch.getString(2)) == level){
                 db.update(SCORE_TABLE,cValues,"SCORE_NUMBER = " + cSearch.getString(0),null);
                 System.out.println("Inserido com sucesso");
                 return true;
@@ -118,14 +117,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public int maxScore(int ID_c,String level_c){
+    public int maxScore(int ID_c,int level_c){
         SQLiteDatabase db = this.getWritableDatabase();
-        String last = "\'" + level_c + "'";
-        System.out.println(last);
-        String s = "SELECT TOTAL FROM scores  WHERE ID =  ? AND LEVEL =  " +last ;
-        System.out.println(s.equals("SELECT TOTAL FROM scores  WHERE ID =  1 AND LEVEL =  'Facil'"));
-        Cursor res = db.rawQuery("SELECT TOTAL FROM scores  WHERE ID =  ? AND LEVEL =  ?",new String[] { String.valueOf(ID_c),last});
-
+        Cursor res = db.rawQuery("SELECT TOTAL FROM scores  WHERE ID =  ? AND LEVEL =  ?",new String[] { String.valueOf(ID_c),String.valueOf(level_c)});
 
         int result = 0;
         if(res.moveToFirst()){
