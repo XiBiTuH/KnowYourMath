@@ -2,6 +2,7 @@ package com.example.knowyourmath;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -10,7 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Registar extends AppCompatActivity {
+public class Registar extends Activity {
 
     DatabaseHelper mydb;
 

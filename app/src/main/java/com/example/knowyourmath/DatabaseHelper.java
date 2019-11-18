@@ -32,6 +32,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
+    // Scores por sessão
+    public static final String SESSION_TABLE = "sessions";
+    public static final String col_1_t = "time";
+    public static final String col_2_t = "username";
+    public static final String col_3_t = "hits";
+    public static final String col_4_t = "misses";
+
+
+
+
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
@@ -40,7 +50,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT,USERNAME TEXT,PASSWORD TEXT)");
         db.execSQL("CREATE TABLE " + SCORE_TABLE + " (SCORE_NUMBER INTEGER PRIMARY KEY AUTOINCREMENT,ID INTEGER ,LEVEL INTEGER,TOTAL INTEGER)");
-
+        db.execSQL("CREATE TABLE "  + SESSION_TABLE + "(" + col_1_t +  " INTEGER PRIMARY KEY,"+ col_2_t +" TEXT,"+ col_3_t +" INTEGER,"+col_4_t +" INTEGER)");
     }
 
     @Override
@@ -48,6 +58,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + SCORE_TABLE);
+            db.execSQL("DROP TABLE IF EXISTS " + SESSION_TABLE);
 
             onCreate(db);
     }
