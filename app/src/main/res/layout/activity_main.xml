@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D5D9EB"
     tools:context=".MainActivity">
 
 
@@ -18,6 +19,7 @@
         android:editable="false"
         android:ems="10"
         android:fontFamily="casual"
+        android:hint="?"
         android:inputType="number"
         android:textAlignment="center"
         android:textSize="30sp"
@@ -25,38 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/euqalSign"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.623" />
-
-    <TextView
-        android:id="@+id/euqalSign"
-        style="@style/ValuesText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:fontFamily="casual"
-        android:text="="
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guess"
-        app:layout_constraintStart_toEndOf="@+id/secondValue"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.646" />
-
-    <TextView
-        android:id="@+id/secondValue"
-        style="@style/ValuesText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="11dp"
-        android:fontFamily="casual"
-        android:text="2000"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/euqalSign"
-        app:layout_constraintStart_toEndOf="@+id/operation"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.646" />
+        app:layout_constraintVertical_bias="0.7" />
 
     <TextView
         android:id="@+id/firstValue"
@@ -72,7 +43,7 @@
         app:layout_constraintEnd_toStartOf="@+id/operation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.646" />
+        app:layout_constraintVertical_bias="0.716" />
 
     <TextView
         android:id="@+id/operation"
@@ -89,7 +60,38 @@
         app:layout_constraintEnd_toStartOf="@+id/secondValue"
         app:layout_constraintStart_toEndOf="@+id/firstValue"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.646" />
+        app:layout_constraintVertical_bias="0.72" />
+
+    <TextView
+        android:id="@+id/secondValue"
+        style="@style/ValuesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="11dp"
+        android:fontFamily="casual"
+        android:text="2000"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/euqalSign"
+        app:layout_constraintStart_toEndOf="@+id/operation"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.716" />
+
+    <TextView
+        android:id="@+id/euqalSign"
+        style="@style/ValuesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="casual"
+        android:text="="
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guess"
+        app:layout_constraintStart_toEndOf="@+id/secondValue"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.723" />
 
     <Button
         android:id="@+id/answerButton"
@@ -97,9 +99,10 @@
         android:layout_height="80dp"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
+        android:layout_marginBottom="30dp"
         android:backgroundTint="#E44F4F"
         android:fontFamily="casual"
-        android:text="I Got This ! "
+        android:text="@string/i_got_this"
         android:textAlignment="center"
         android:textColor="#BAFFFFFF"
         android:textSize="35sp"
@@ -114,16 +117,18 @@
     <Spinner
         android:id="@+id/spinner"
         style="@style/SpinnerLook"
-        android:layout_width="407dp"
+        android:layout_width="0dp"
         android:layout_height="67dp"
         android:layout_marginStart="2dp"
         android:layout_marginEnd="3dp"
+        android:layout_marginBottom="10dp"
         android:dropDownWidth="match_parent"
         android:textAlignment="center"
+        android:textColor="#00B6FF"
+        app:layout_constraintBottom_toTopOf="@+id/log_out"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor= "#00B6FF"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/wrong_text"
@@ -246,8 +251,8 @@
         android:id="@+id/log_out"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="20dp"
         android:backgroundTint="#E44F4F"
         android:fontFamily="casual"
         android:onClick="logOut"
@@ -267,10 +272,37 @@
         android:text="Pro     "
         app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintEnd_toStartOf="@+id/wrong_image"
+        app:layout_constraintHorizontal_bias="0.833"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner"
-        app:layout_constraintVertical_bias="0.324"
+        app:layout_constraintVertical_bias="0.336"
         tools:checked="false" />
+
+    <Button
+        android:id="@+id/check_session"
+        android:layout_width="68dp"
+        android:layout_height="53dp"
+        android:background="#E44F4F"
+        android:text="@string/session_scores"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/firstValue"
+        app:layout_constraintEnd_toStartOf="@+id/correct_text"
+        app:layout_constraintHorizontal_bias="0.32"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/max_score"
+        app:layout_constraintVertical_bias="0.646" />
+
+    <ImageButton
+        android:id="@+id/info_proMode"
+        android:layout_width="36dp"
+        android:layout_height="25dp"
+        android:src="@android:drawable/ic_menu_info_details"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintEnd_toStartOf="@+id/pro_mode"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        app:layout_constraintVertical_bias="0.329" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
